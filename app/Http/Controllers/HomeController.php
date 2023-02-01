@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user_id = Auth::user()->id;
+        $name = Auth::user()->name;
+        $email = Auth::user()->email;
+        return view('home', compact('user_id', 'name', 'email'));
+    }
+
+    public function list()
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        return view('list', ['user' => $user]);
     }
 }
