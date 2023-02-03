@@ -7,32 +7,30 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row-12">
-                            <a href="{{ url('create') }}" class="btn btn-success float-right">Add Transactions</a>
+                            {{-- <a href="{{ url('users/create') }}" class="btn btn-success float-right ">Add Users</a> --}}
                         </div>
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Type</th>
-                                    <th scope="col">Category</th>
-                                    <th scope="col">Amount</th>
+                                    <th scope="col">User Name</th>
+                                    <th scope="col">Email</th>
                                     <th scope="col">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($expenses as $expense)
+                                @foreach ($users as $user)
                                     <tr>
-                                        <th>{{ $expense->date }}</th>
-                                        <td>{{ $expense->type }}</td>
-                                        <td>{{ $expense->category }}</td>
-                                        <td>{{ $expense->amount }}</td>
+                                        <th>{{ $user->name }}</th>
+                                        <td>{{ $user->email }}</td>
                                         <td>
-                                            <a href="{{ url('expense/edit', ['id' => $expense->id]) }}"
+                                            <a href="{{ url('users/edit', ['id' => $user->id]) }}"
                                                 class="btn btn-info btn-sm">EDIT</a>
 
-                                            <a href="{{ url('expense/delete', $expense->id) }}"
+                                            <a href="{{ url('users/delete', $user->id) }}"
                                                 class="btn btn-danger btn-sm">DELETE</a>
-                                            {{-- <a href="{{ url('invite') }}" class="btn btn-success float-right ">Invite</a> --}}
+                                            <a href="{{ url('invite') }}" class="btn btn-primary btn-sm"> Add
+                                                Users</a>
+                                            {{-- /' . $id --}}
                                         </td>
                                     </tr>
                                 @endforeach

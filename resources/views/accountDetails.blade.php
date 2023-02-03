@@ -33,16 +33,15 @@
                                         <td>
                                             <a href="{{ url('accounts/edit', ['id' => $account->id]) }}"
                                                 class="btn btn-info btn-sm">EDIT</a>
-                                            {{-- <form method="POST" action="{{ url('delete', $account->id) }}">
-                                                @csrf
-                                                <input name="_method" type="hidden" value="DELETE">
-                                                <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm_task"
-                                                    data-toggle="tooltip" title='Delete'>Delete</button>
-                                            </form> --}}
+
                                             <a href="{{ url('accounts/delete', $account->id) }}"
                                                 class="btn btn-danger btn-sm">DELETE</a>
 
-                                            <a href="{{ url('expense') }}" class="btn btn-primary btn-sm">Transactions</a>
+                                            <a href="{{ url('expense/' . $account->id) }}"
+                                                class="btn btn-primary btn-sm">Transactions</a>
+
+                                            <a href="{{ url('users/' . $account->id) }}"
+                                                class="btn btn-dark btn-sm">Users</a>
                                         </td>
                                     </tr>
                                 @endforeach

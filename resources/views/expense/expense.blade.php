@@ -5,10 +5,10 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Add Account Details') }}</div>
+                    <div class="card-header">{{ __('Add Transactions Details') }}</div>
 
                     <div class="card-body">
-                        <form method="post" action="{{ url('expense/save-account') }}">
+                        <form method="post" action="{{ url('save-account') }}">
                             @csrf
                             <div class="row mb-3">
                                 <label for="date" class="col-md-4 col-form-label text-md-end">{{ __('Date') }}</label>
@@ -51,9 +51,13 @@
                                         class="col-md-4 col-form-label text-md-end">{{ __('Type Name') }}</label>
 
                                     <div class="col-md-6">
-                                        <input id="type" type="text"
+                                        {{-- <input id="type" type="text"
                                             class="form-control @error('type') is-invalid @enderror" name="type"
-                                            value="{{ old('type') }}" required autocomplete="type">
+                                            value="{{ old('type') }}" required autocomplete="type"> --}}
+
+                                        <input type="radio" name="Income" value="Income">Income
+                                        <input type="radio" name="Expense" value="Expense">Expense
+                                        <input type="radio" name="Transfer" value="Transfer">Transfer
 
                                         @error('type')
                                             <span class="invalid-feedback" role="alert">
@@ -102,7 +106,7 @@
                                     </button>
                                 </div>
                             </div>
-                        </form>
+                            {{-- </form> --}}
                     </div>
                 </div>
             </div>

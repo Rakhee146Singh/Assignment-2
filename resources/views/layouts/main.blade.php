@@ -30,8 +30,8 @@
         @include('layouts.header')
 
 
-        @yield('content')
 
+        @yield('content')
 
     </div>
 </body>

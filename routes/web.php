@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +24,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/list', [App\Http\Controllers\HomeController::class, 'list']);
+// Route::get('/list', [App\Http\Controllers\HomeController::class, 'list']);
 
 
 Route::controller(App\Http\Controllers\AccountController::class)->prefix('accounts')->group(function () {
@@ -33,11 +36,25 @@ Route::controller(App\Http\Controllers\AccountController::class)->prefix('accoun
     Route::get('delete/{id}', 'destroy');
 });
 
-Route::controller(App\Http\Controllers\ExpenseController::class)->prefix('expense')->group(function () {
-    Route::get('/', 'index');
-    Route::get('create', 'createPage')->name('accounts.create');
-    Route::post('save-account', 'create')->name('accounts.save-account');
-    Route::get('edit/{id}', 'edit')->name('accounts.edit');
-    Route::put('update/{id}', 'update');
-    Route::get('delete/{id}', 'destroy');
+Route::controller(ExpenseController::class)->group(function () {
+    Route::get('expense/{id}', 'index');
+    Route::get('create', 'createPage')->name('create');
+    Route::post('save-account', 'create');
+    Route::get('expense/edit/{id}', 'edit')->name('expense.edit');
+    Route::put('expense/update/{id}', 'update');
+    Route::get('expense/delete/{id}', 'destroy');
+    Route::get('total', 'total');
+    Route::get('income', 'total_income');
+});
+
+Route::controller(UserController::class)->group(function () {
+    Route::get('users/{id}', 'index');
+    // Route::get('users', 'abc');
+    // Route::get('create', 'createPage')->name('create');
+    Route::post('invite/{id}', 'create');
+    // Route::get('expense/edit/{id}', 'edit')->name('expense.edit');
+    // Route::put('expense/update/{id}', 'update');
+    // Route::get('expense/delete/{id}', 'destroy');
+    Route::get('invite', 'invite');
+    Route::post('process_invite', 'process_invites');
 });

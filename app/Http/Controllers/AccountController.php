@@ -13,15 +13,6 @@ class AccountController extends Controller
 
     public function index()
     {
-        // $account = Auth::user()->accounts->get();
-        // dd($account);
-        // $user = User::findOrFail(Auth::user()->id);
-        // $account = Account::where($user)->get();
-        // return view('accountDetails',  ['accounts' => $account]);
-
-        // $user = User::findOrFail(Auth::user()->accounts->get());
-
-        // $account = Account::all();
         $account = auth()->user()->accounts()->get();
         // dd($account);
         return view('accountDetails',  ['accounts' => $account]);
@@ -29,12 +20,7 @@ class AccountController extends Controller
 
     public function create(Request $request)
     {
-        // $this->validate($request, [
-        //     'user_name' => ['required'],
-        //     'bank_name' => ['required'],
-        //     'account_no' => ['required'],
-        //     'ifsc_code' => ['required', 'min:8'],
-        // ]);
+
         $account = new Account;
         $account->account_name = $request->account_name;
         $account->amount = $request->amount;
@@ -72,7 +58,6 @@ class AccountController extends Controller
 
     public function destroy($id)
     {
-
         Account::findOrFail($id)->delete();
         return redirect('accounts');
     }

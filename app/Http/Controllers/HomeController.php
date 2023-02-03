@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Account;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,11 +30,5 @@ class HomeController extends Controller
         $name = Auth::user()->name;
         $email = Auth::user()->email;
         return view('home', compact('user_id', 'name', 'email'));
-    }
-
-    public function list()
-    {
-        $user = User::findOrFail(Auth::user()->id);
-        return view('list', ['user' => $user]);
     }
 }
