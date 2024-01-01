@@ -44,17 +44,11 @@ Route::controller(ExpenseController::class)->group(function () {
     Route::put('expense/update/{id}', 'update');
     Route::get('expense/delete/{id}', 'destroy');
     Route::get('total', 'total');
-    Route::get('income', 'total_income');
 });
 
 Route::controller(UserController::class)->group(function () {
     Route::get('users/{id}', 'index');
-    // Route::get('users', 'abc');
-    // Route::get('create', 'createPage')->name('create');
-    Route::post('invite/{id}', 'create');
-    // Route::get('expense/edit/{id}', 'edit')->name('expense.edit');
-    // Route::put('expense/update/{id}', 'update');
-    // Route::get('expense/delete/{id}', 'destroy');
-    Route::get('invite', 'invite');
+    Route::get('invite/{id}', 'invite');
     Route::post('process_invite', 'process_invites');
+    Route::get('verification/{token}', 'verificationAction');
 });

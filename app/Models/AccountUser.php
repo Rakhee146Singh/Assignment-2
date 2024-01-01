@@ -11,5 +11,5 @@ class AccountUser extends Model
 
     protected $table = 'accounts_user';
 
-    protected $fillable = ['user_id', 'account_id'];
+    protected $fillable = ['user_id', 'account_id', 'is_admin', 'status'];
 }

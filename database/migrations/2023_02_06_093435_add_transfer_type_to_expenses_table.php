@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('accounts_user', function (Blueprint $table) {
-            $table->boolean('is_admin')->nullable();
-            $table->enum('status', ['accepted', 'invited', 'pending'])->nullable();
+        Schema::table('expenses', function (Blueprint $table) {
+            $table->enum('transfer_type', ['credit', 'debit'])->nullable()->after('type');
+            $table->string('opponent_name')->nullable()->after('transfer_type');
         });
     }
 
@@ -26,7 +26,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('accounts_user', function (Blueprint $table) {
+        Schema::table('expenses', function (Blueprint $table) {
             //
         });
     }

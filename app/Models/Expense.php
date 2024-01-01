@@ -19,6 +19,8 @@ class Expense extends Model
         'account_id',
         'date',
         'type',
+        'transfer_type',
+        'opponent_name',
         'category',
         'amount',
     ];
@@ -26,5 +28,10 @@ class Expense extends Model
     public function accounts()
     {
         return $this->belongsTo(Account::class);
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
     }
 }

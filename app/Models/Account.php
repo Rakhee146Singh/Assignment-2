@@ -22,7 +22,7 @@ class Account extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'accounts_user', 'account_id', 'user_id');
+        return $this->belongsToMany(User::class, 'accounts_user', 'account_id', 'user_id')->withPivot(['is_admin', 'status']);
     }
 
     public function expenses()

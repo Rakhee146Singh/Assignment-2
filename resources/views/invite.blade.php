@@ -21,11 +21,10 @@
                             @csrf
                             <div class="form-group">
                                 <label for="email">Email address</label>
-                                {{-- <input type="email" class="form-control" id="email" name="email"
-                                    aria-describedby="emailHelp" placeholder="Enter email"> --}}
 
-                                <select class="btn btn-light dropdown-toggle bg-gray-900" name="account_name"
-                                    id="account_name">
+                                <input type="hidden" class="form-control" id="account_id" name="account_id">
+
+                                <select class="btn btn-light dropdown-toggle bg-gray-900" name="id" id="email">
                                     <option hidden>Choose Account Name</option>
                                     {{-- {{ $accounts }} --}}
                                     @foreach ($users as $user)

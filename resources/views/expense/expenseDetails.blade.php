@@ -14,6 +14,8 @@
                                 <tr>
                                     <th scope="col">Date</th>
                                     <th scope="col">Type</th>
+                                    <th scope="col">Transfer Type</th>
+                                    <th scope="col">Opponent ID</th>
                                     <th scope="col">Category</th>
                                     <th scope="col">Amount</th>
                                     <th scope="col">Actions</th>
@@ -24,6 +26,8 @@
                                     <tr>
                                         <th>{{ $expense->date }}</th>
                                         <td>{{ $expense->type }}</td>
+                                        <td>{{ $expense->transfer_type }}</td>
+                                        <td>{{ $expense->opponent_name }}</td>
                                         <td>{{ $expense->category }}</td>
                                         <td>{{ $expense->amount }}</td>
                                         <td>

@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'verification_token'
     ];
 
     /**
@@ -44,6 +45,6 @@ class User extends Authenticatable
 
     public function accounts()
     {
-        return $this->belongsToMany(Account::class, 'accounts_user', 'user_id', 'account_id');
+        return $this->belongsToMany(Account::class, 'accounts_user', 'user_id', 'account_id')->withPivot(['is_admin', 'status']);
     }
 }
